@@ -37,6 +37,8 @@ static void print_string(const std::string& i)
 
 int main()
 {
+    Array<int> empty;
+
     Array<int> arr(15);
     for (std::size_t i = 0; i < arr.size(); i++)
     {

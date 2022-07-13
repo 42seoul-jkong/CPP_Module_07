@@ -4,13 +4,6 @@
 #include <cstdlib>
 
 template <typename T>
-Array<T>::Array()
-    : n(), a(this->n)
-{
-    // No-OP
-}
-
-template <typename T>
 Array<T>::Array(Array::index_t n)
     : n(n), a(new T[this->n])
 {
@@ -30,20 +23,22 @@ Array<T>::Array(const Array& that)
 template <typename T>
 Array<T>& Array<T>::operator=(const Array& that)
 {
-    Array tmp(that);
+    if (this != &that)
+    {
+        Array tmp(that);
 
-    // Begin swap(this->a, tmp.a)
-    T* a_x = this->a;
-    this->a = tmp.a;
-    tmp.a = a_x;
-    // End
+        // Begin swap(this->a, tmp.a)
+        T* x_a = this->a;
+        this->a = tmp.a;
+        tmp.a = x_a;
+        // End
 
-    // Begin swap(this->n, tmp.n)
-    Array::index_t n_x = this->n;
-    this->n = tmp.n;
-    tmp.n = n_x;
-    // End
-
+        // Begin swap(this->n, tmp.n)
+        Array::index_t x_n = this->n;
+        this->n = tmp.n;
+        tmp.n = x_n;
+        // End
+    }
     return *this;
 }
 

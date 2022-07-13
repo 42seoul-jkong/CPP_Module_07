@@ -9,21 +9,20 @@ template <typename T>
 class Array
 {
 public:
-    typedef unsigned int index_t;
+    typedef unsigned int index_t; // must be unsigned type
 
 private:
-    Array::index_t n;
+    index_t n;
     T* a;
 
 public:
-    Array();
-    Array(Array::index_t n);
+    Array(index_t n = index_t());
     Array(const Array& that);
     Array& operator=(const Array& that);
     ~Array();
-    T& operator[](Array::index_t i);
-    const T& operator[](Array::index_t i) const;
-    Array::index_t size() const;
+    T& operator[](index_t i);
+    const T& operator[](index_t i) const;
+    index_t size() const;
 
 public:
     class IndexOutOfRangeException : public std::exception
