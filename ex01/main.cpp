@@ -36,5 +36,8 @@ int main()
     }
     iter(str_arr, len, print_string);
 
+    delete[] str_arr;
+    delete[] arr;
+
     return 0;
 }
